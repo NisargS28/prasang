@@ -1,10 +1,12 @@
 import { type NextRequest, NextResponse } from "next/server"
 import Razorpay from "razorpay"
 
-const razorpay = new Razorpay({
-  key_id: process.env.RAZORPAY_KEY_ID!,
-  key_secret: process.env.RAZORPAY_KEY_SECRET!,
-})
+function getRazorpay() {
+  return new Razorpay({
+    key_id: process.env.RAZORPAY_KEY_ID!,
+    key_secret: process.env.RAZORPAY_KEY_SECRET!,
+  })
+}
 
 const orders: {
   [key: string]: {
@@ -28,6 +30,7 @@ export async function POST(request: NextRequest) {
     const { productId, productName, price, size } = await request.json()
 
     // Create Razorpay order
+    const razorpay = getRazorpay()
     const razorpayOrder = await razorpay.orders.create({
       amount: price * 100, // Amount in paise
       currency: "INR",
