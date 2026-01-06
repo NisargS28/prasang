@@ -8,10 +8,10 @@ export function Header() {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border">
+    <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-xl supports-[backdrop-filter]:bg-background/60 border-b border-border/50 shadow-elegant">
       <nav className="container mx-auto px-4 py-4 flex items-center justify-between">
-        <Link href="/" className="text-2xl font-semibold text-foreground tracking-tight">
-          Elegance
+        <Link href="/" className="flex items-center">
+          <span className="text-3xl font-semibold tracking-tight" style={{ color: '#8B4513', fontFamily: "'Sahitya', serif" }}>प्रसंग</span>
         </Link>
 
         <div className="hidden md:flex gap-8 items-center">
