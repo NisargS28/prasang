@@ -180,6 +180,41 @@ export default function Shop() {
       image: "/img25(1).jpeg",
       category: "Dresses",
     },
+    {
+      id: 26,
+      name: "Elegant Evening Wear",
+      price: 6999,
+      image: "/img26.jpeg",
+      category: "Tops",
+    },
+    {
+      id: 27,
+      name: "Sophisticated Style",
+      price: 5799,
+      image: "/img27.jpeg",
+      category: "Dresses",
+    },
+    {
+      id: 28,
+      name: "Modern Fashion",
+      price: 4899,
+      image: "/img28.jpeg",
+      category: "Outerwear",
+    },
+    {
+      id: 29,
+      name: "Classic Collection",
+      price: 6499,
+      image: "/img29.jpeg",
+      category: "Bottoms",
+    },
+    {
+      id: 30,
+      name: "Premium Style Collection",
+      price: 7299,
+      image: "/img30.jpeg",
+      category: "Dresses",
+    },
   ]
 
   return (
