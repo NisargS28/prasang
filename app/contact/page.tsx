@@ -13,12 +13,24 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Simulate form submission
-    setTimeout(() => {
-      setSubmitted(true)
-      setFormData({ name: "", email: "", message: "" })
-      setTimeout(() => setSubmitted(false), 5000)
-    }, 500)
+    
+    try {
+      const response = await fetch("https://formspree.io/f/xbdlnyle", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+
+      if (response.ok) {
+        setSubmitted(true)
+        setFormData({ name: "", email: "", message: "" })
+        setTimeout(() => setSubmitted(false), 5000)
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error)
+    }
   }
 
   return (
@@ -44,7 +56,7 @@ export default function Contact() {
                     <Mail className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
                     <div>
                       <h3 className="font-semibold mb-1">Email</h3>
-                      <p className="text-muted-foreground">hello@elegance.com</p>
+                      <p className="text-muted-foreground">thakkarricha0712@gmail.com</p>
                       <p className="text-muted-foreground text-sm">We respond within 24 hours</p>
                     </div>
                   </div>
@@ -53,7 +65,7 @@ export default function Contact() {
                     <Phone className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
                     <div>
                       <h3 className="font-semibold mb-1">Phone</h3>
-                      <p className="text-muted-foreground">+91 (0) 1234 567890</p>
+                      <p className="text-muted-foreground">+91 82001 00418</p>
                       <p className="text-muted-foreground text-sm">Monday to Friday, 10am - 6pm IST</p>
                     </div>
                   </div>

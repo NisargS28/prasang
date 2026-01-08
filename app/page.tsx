@@ -11,7 +11,7 @@ export default function Home() {
     <>
       <Header />
       <main>
-        <section className="gradient-secondary py-20 md:py-32 relative overflow-hidden">
+        <section className="py-20 md:py-32 relative overflow-hidden" style={{backgroundColor: '#F7E7CE'}}>
           <div className="absolute inset-0 opacity-5" style={{backgroundImage: 'url(/logo.jpeg)', backgroundSize: 'cover', backgroundPosition: 'center'}}></div>
           <div className="container mx-auto px-4 relative z-10">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
