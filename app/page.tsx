@@ -1,34 +1,11 @@
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import Link from "next/link"
+import { products } from "@/lib/products"
 
 export default function Home() {
-  const featuredProducts = [
-    {
-      id: 1,
-      name: "Silk Evening Dress",
-      price: 8999,
-      image: "/img1.jpeg",
-    },
-    {
-      id: 2,
-      name: "Cashmere Sweater",
-      price: 4499,
-      image: "/img2.jpeg",
-    },
-    {
-      id: 3,
-      name: "Designer Blazer",
-      price: 6299,
-      image: "/img3.jpeg",
-    },
-    {
-      id: 4,
-      name: "Linen Trousers",
-      price: 3999,
-      image: "/img4.jpeg",
-    },
-  ]
+  // Select first 4 products from shop collection as featured/best sellers
+  const featuredProducts = products.slice(0, 4)
 
   return (
     <>
@@ -40,9 +17,12 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
               <div className="max-w-2xl fade-in-up">
                 <h1 className="text-4xl md:text-6xl font-light mb-6 tracking-tight text-balance">Timeless Elegance</h1>
-                <p className="text-lg text-muted-foreground mb-8 text-pretty">
+                {/* <p className="text-lg text-muted-foreground mb-8 text-pretty">
                   Discover our premium collection of women's fashion, curated for those who appreciate quality, style, and
                   sophistication.
+                </p> */}
+                <p className="text-lg text-muted-foreground mb-8 text-pretty">
+                  From festivals to daily wear, PRASANG was born to dress every chapter of your life—traditional at heart, modern in style.
                 </p>
                 <Link
                   href="/shop"

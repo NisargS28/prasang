@@ -22,7 +22,7 @@ const products: {
   1: {
     id: 1,
     name: "Silk Evening Dress",
-    price: 8999,
+    price: 1600,
     image: "/img1.jpeg",
     description:
       "Exquisite silk evening dress perfect for special occasions. Features elegant draping and impeccable tailoring.",
