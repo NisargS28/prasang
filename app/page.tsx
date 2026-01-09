@@ -11,8 +11,37 @@ export default function Home() {
     <>
       <Header />
       <main>
-        <section className="py-20 md:py-32 relative overflow-hidden" style={{backgroundColor: '#F7E7CE'}}>
-          <div className="absolute inset-0 opacity-5" style={{backgroundImage: 'url(/logo.jpeg)', backgroundSize: 'cover', backgroundPosition: 'center'}}></div>
+        <section className="py-20 md:py-32 relative overflow-hidden min-h-screen">
+          {/* Taj Mahal background image for mobile */}
+          <div 
+            className="absolute inset-0 md:hidden" 
+            style={{
+              backgroundImage: 'url(/richa_mobile.png)',
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              height: '100%'
+            }}
+          ></div>
+          
+          {/* Taj Mahal background image for desktop - clear on right for portrait, blurred on left for text */}
+          <div 
+            className="absolute inset-0 hidden md:block" 
+            style={{
+              backgroundImage: 'url(/richa.png)',
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              height: '100%'
+            }}
+          ></div>
+          
+          {/* Gradient overlay - strong on left for text readability, transparent on right for portrait clarity */}
+          <div 
+            className="absolute inset-0" 
+            style={{
+              background: 'linear-gradient(to right, rgba(175, 168, 158, 0.95) 0%, rgba(175, 168, 158, 0.85) 40%, rgba(175, 168, 158, 0.3) 70%, transparent 100%)'
+            }}
+          ></div>
+          
           <div className="container mx-auto px-4 relative z-10">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
               <div className="max-w-2xl fade-in-up">
@@ -38,9 +67,6 @@ export default function Home() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                   </svg>
                 </Link>
-              </div>
-              <div className="hidden md:flex justify-center items-center">
-                <img src="/logo.jpeg" alt="Logo" className="w-full max-w-md h-auto opacity-20" />
               </div>
             </div>
           </div>

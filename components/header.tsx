@@ -15,7 +15,7 @@ export function Header() {
         </Link>
 
         <div className="hidden md:flex gap-8 items-center">
-          <Link href="/" className="text-sm hover:text-primary transition-colors">
+          <Link href="/shop" className="text-sm hover:text-primary transition-colors">
             Shop
           </Link>
           <Link href="/about" className="text-sm hover:text-primary transition-colors">
