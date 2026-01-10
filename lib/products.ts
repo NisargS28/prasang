@@ -165,4 +165,15 @@ export const products: Product[] = [
     fabric: "Cotton Blend",
     care: "Machine wash cold. Tumble dry low.",
   },
+  {
+    id: 31,
+    name: "Pure cotton shirt",
+    price: 750,
+    image: "/img31.jpeg",
+    category: "Dresses",
+    description: "Cotton shirt, perfect for everyday fashion.",
+    sizes: ["XS", "S", "M", "L", "XL"],
+    fabric: "Cotton Blend",
+    care: "Machine wash cold. Tumble dry low.",
+  },
 ]
