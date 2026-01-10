@@ -4,15 +4,23 @@ export interface Product {
   price: number
   image: string
   category: string
+  description: string
+  sizes: string[]
+  fabric: string
+  care: string
 }
 
 export const products: Product[] = [
   {
     id: 1,
-    name: "Two piece Kurti pant set",
+    name: "Two piece Pink Kurti pant set",
     price: 1600,
     image: "/img1.jpeg",
     category: "Dresses",
+    description: "Beautiful two-piece pink kurti pant set perfect for casual and festive occasions. Features elegant design and comfortable fit.",
+    sizes: ["XS", "S", "M", "L", "XL"],
+    fabric: "Premium Cotton Blend",
+    care: "Machine wash cold. Tumble dry low or hang to dry.",
   },
   {
     id: 2,
@@ -20,6 +28,10 @@ export const products: Product[] = [
     price: 1500,
     image: "/img2.jpeg",
     category: "Dresses",
+    description: "Elegant three-piece red suit with traditional charm. Perfect for festivals and special occasions.",
+    sizes: ["XS", "S", "M", "L", "XL"],
+    fabric: "Premium Cotton",
+    care: "Machine wash cold. Iron on medium heat.",
   },
   {
     id: 3,
@@ -27,6 +39,10 @@ export const products: Product[] = [
     price: 1500,
     image: "/img3.jpeg",
     category: "Dresses",
+    description: "Stunning three-piece dilkash orange suit with beautiful embellishments. A perfect blend of traditional and contemporary style.",
+    sizes: ["XS", "S", "M", "L", "XL"],
+    fabric: "Cotton Blend",
+    care: "Hand wash or machine wash cold. Dry in shade.",
   },
   {
     id: 4,
@@ -34,6 +50,10 @@ export const products: Product[] = [
     price: 1500,
     image: "/img4.jpeg",
     category: "Dresses",
+    description: "Lovely three-piece pink suit with delicate design. Ideal for festive celebrations and gatherings.",
+    sizes: ["XS", "S", "M", "L", "XL"],
+    fabric: "Pure Cotton",
+    care: "Machine wash cold. Iron while slightly damp for best results.",
   },
   {
     id: 5,
@@ -41,6 +61,10 @@ export const products: Product[] = [
     price: 1500,
     image: "/img5.jpeg",
     category: "Dresses",
+    description: "Sophisticated three-piece brown suit with elegant styling. Perfect for both casual and formal occasions.",
+    sizes: ["XS", "S", "M", "L", "XL"],
+    fabric: "Premium Cotton",
+    care: "Machine wash cold. Tumble dry low.",
   },
   {
     id: 6,
@@ -48,6 +72,10 @@ export const products: Product[] = [
     price: 1500,
     image: "/img6.jpeg",
     category: "Dresses",
+    description: "Beautiful three-piece dusty purple suit with modern appeal. A versatile addition to your wardrobe.",
+    sizes: ["XS", "S", "M", "L", "XL"],
+    fabric: "Cotton Blend",
+    care: "Machine wash cold. Hang to dry.",
   },
   {
     id: 7,
@@ -55,6 +83,10 @@ export const products: Product[] = [
     price: 1500,
     image: "/img7.jpeg",
     category: "Dresses",
+    description: "Trendy three-piece olive green suit with contemporary design. Perfect for making a style statement.",
+    sizes: ["XS", "S", "M", "L", "XL"],
+    fabric: "Premium Cotton",
+    care: "Machine wash cold. Iron on medium heat.",
   },
   {
     id: 8,
@@ -62,6 +94,10 @@ export const products: Product[] = [
     price: 1500,
     image: "/img8.jpeg",
     category: "Dresses",
+    description: "Traditional three-piece pink bandhani suit with authentic Gujarati craftsmanship. Perfect for festivals and celebrations.",
+    sizes: ["XS", "S", "M", "L", "XL"],
+    fabric: "Pure Cotton Bandhani",
+    care: "Hand wash recommended. Dry in shade to preserve colors.",
   },
   {
     id: 9,
@@ -69,6 +105,10 @@ export const products: Product[] = [
     price: 500,
     image: "/img9.jpeg",
     category: "Tops",
+    description: "Stylish monochrome geometric print cropped koti. A versatile piece that pairs well with various outfits.",
+    sizes: ["XS", "S", "M", "L", "XL"],
+    fabric: "Cotton Blend",
+    care: "Machine wash cold. Hang to dry.",
   },
   {
     id: 26,
@@ -76,6 +116,10 @@ export const products: Product[] = [
     price: 1100,
     image: "/img26.jpeg",
     category: "Tops",
+    description: "Vibrant marigold swing top with comfortable fit. Perfect for casual outings and daily wear.",
+    sizes: ["XS", "S", "M", "L", "XL"],
+    fabric: "Rayon",
+    care: "Hand wash or machine wash cold. Iron on low heat.",
   },
   {
     id: 27,
@@ -83,6 +127,10 @@ export const products: Product[] = [
     price: 1200,
     image: "/img27.jpeg",
     category: "Dresses",
+    description: "Elegant sand beige casual wear with minimalist design. Perfect for everyday comfort and style.",
+    sizes: ["XS", "S", "M", "L", "XL"],
+    fabric: "Cotton Linen Blend",
+    care: "Machine wash cold. Iron while slightly damp.",
   },
   {
     id: 28,
@@ -90,6 +138,10 @@ export const products: Product[] = [
     price: 1200,
     image: "/img28.jpeg",
     category: "Outerwear",
+    description: "Stylish relaxed fit red collared shirt paired with white flowy trousers. A perfect combination for contemporary fashion.",
+    sizes: ["XS", "S", "M", "L", "XL"],
+    fabric: "Cotton",
+    care: "Machine wash cold. Tumble dry low.",
   },
   {
     id: 29,
@@ -97,6 +149,10 @@ export const products: Product[] = [
     price: 1200,
     image: "/img29.jpeg",
     category: "Bottoms",
+    description: "Classic white collared shirt with white flowy trousers. Timeless elegance for any occasion.",
+    sizes: ["XS", "S", "M", "L", "XL"],
+    fabric: "Pure Cotton",
+    care: "Machine wash cold. Iron on medium heat.",
   },
   {
     id: 30,
@@ -104,5 +160,9 @@ export const products: Product[] = [
     price: 1200,
     image: "/img30.jpeg",
     category: "Dresses",
+    description: "Comfortable brown two-piece casual wear with modern styling. Perfect for everyday fashion.",
+    sizes: ["XS", "S", "M", "L", "XL"],
+    fabric: "Cotton Blend",
+    care: "Machine wash cold. Tumble dry low.",
   },
 ]

@@ -1,17 +1,38 @@
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
+import Image from "next/image"
 
 export default function About() {
   return (
     <>
       <Header />
       <main>
-        <section className="bg-secondary py-20 md:py-32">
+        <section className="bg-secondary py-8 md:py-12 min-h-[calc(100vh-80px)] flex items-center">
           <div className="container mx-auto px-4">
-            <h1 className="text-4xl md:text-5xl font-light mb-6 tracking-tight max-w-2xl">Our Story</h1>
-            <p className="text-lg text-muted-foreground max-w-2xl">
-              Founded in 2015, Elegance is dedicated to bringing timeless sophistication to modern women's fashion.
-            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+              <div>
+                <h1 className="text-3xl md:text-4xl font-light mb-4 tracking-tight">Our Story</h1>
+                <p className="text-base md:text-lg text-muted-foreground">
+                  Prasang was born from a small dream and a big love for fashion.  
+Rooted in Gujarati culture, where colors speak, fabrics feel like home, and every outfit tells a prasang.
+                </p>
+              </div>
+              <div className="flex flex-col items-center">
+                <div className="relative">
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/40 rounded-lg transform rotate-3"></div>
+                  <div className="relative bg-white p-2 rounded-lg shadow-2xl transform -rotate-2 hover:rotate-0 transition-transform duration-300">
+                    <Image
+                      src="/abt.jpeg"
+                      alt="Richa Thakkar"
+                      width={300}
+                      height={380}
+                      className="rounded-md object-cover"
+                    />
+                  </div>
+                </div>
+                <p className="mt-4 text-lg font-light tracking-wide">Richa Thakkar</p>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -88,14 +109,14 @@ export default function About() {
                 </p>
               </div>
               <div className="text-center">
-                <div className="text-5xl font-light mb-4 text-primary">20+</div>
+                <div className="text-5xl font-light mb-4 text-primary">1</div>
                 <h3 className="font-semibold mb-2 text-lg">Years of Experience</h3>
                 <p className="text-muted-foreground">
                   Our team brings decades of fashion expertise and design excellence.
                 </p>
               </div>
               <div className="text-center">
-                <div className="text-5xl font-light mb-4 text-primary">10K+</div>
+                <div className="text-5xl font-light mb-4 text-primary">1K+</div>
                 <h3 className="font-semibold mb-2 text-lg">Happy Customers</h3>
                 <p className="text-muted-foreground">
                   We're proud to serve thousands of satisfied customers worldwide.

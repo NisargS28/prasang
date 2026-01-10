@@ -39,10 +39,10 @@ export default function Shop() {
                     </div>
                     <div className="space-y-2">
                       <p className="text-xs text-muted-foreground uppercase tracking-wider">{product.category}</p>
-                      <h3 className="font-medium text-lg group-hover:text-primary transition-colors line-clamp-2">
+                      <h3 className="font-medium text-lg transition-colors line-clamp-2 group-hover:text-[#7B8D6A]">
                         {product.name}
                       </h3>
-                      <p className="text-primary font-semibold">₹{product.price.toLocaleString("en-IN")}</p>
+                      <p className="text-primary font-semibold transition-colors group-hover:text-[#7B8D6A]">₹{product.price.toLocaleString("en-IN")}</p>
                     </div>
                   </div>
                 </Link>

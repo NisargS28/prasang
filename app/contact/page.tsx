@@ -15,7 +15,7 @@ export default function Contact() {
     e.preventDefault()
     
     try {
-      const response = await fetch("https://formspree.io/f/xbdlnyle", {
+      const response = await fetch("https://formspree.io/f/mqeezljv", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -56,7 +56,7 @@ export default function Contact() {
                     <Mail className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
                     <div>
                       <h3 className="font-semibold mb-1">Email</h3>
-                      <p className="text-muted-foreground">thakkarricha0712@gmail.com</p>
+                      <a href="mailto:prasang051@gmail.com" className="text-muted-foreground">prasang051@gmail.com</a>
                       <p className="text-muted-foreground text-sm">We respond within 24 hours</p>
                     </div>
                   </div>
@@ -65,7 +65,7 @@ export default function Contact() {
                     <Phone className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
                     <div>
                       <h3 className="font-semibold mb-1">Phone</h3>
-                      <p className="text-muted-foreground">+91 82001 00418</p>
+                      <a href="tel:+918200100418" className="text-muted-foreground">+91 82001 00418</a>
                       <p className="text-muted-foreground text-sm">Monday to Friday, 10am - 6pm IST</p>
                     </div>
                   </div>
@@ -74,8 +74,7 @@ export default function Contact() {
                     <MapPin className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
                     <div>
                       <h3 className="font-semibold mb-1">Address</h3>
-                      <p className="text-muted-foreground">123 Fashion District</p>
-                      <p className="text-muted-foreground">New Delhi, Delhi 110001</p>
+                      <p className="text-muted-foreground">Ahmedabad, Gujarat</p>
                       <p className="text-muted-foreground">India</p>
                     </div>
                   </div>
@@ -84,15 +83,15 @@ export default function Contact() {
                 <div className="mt-12 p-6 bg-secondary border border-border">
                   <h3 className="font-semibold mb-3">Follow Us</h3>
                   <div className="flex gap-4">
-                    <a href="#" className="text-primary hover:underline text-sm">
+                    <a href="https://www.instagram.com/___prasang?igsh=MXZnOGI4Z2kycWd1dQ==" className="text-primary hover:underline text-sm">
                       Instagram
                     </a>
-                    <a href="#" className="text-primary hover:underline text-sm">
+                    {/* <a href="#" className="text-primary hover:underline text-sm">
                       Facebook
                     </a>
                     <a href="#" className="text-primary hover:underline text-sm">
                       Twitter
-                    </a>
+                    </a> */}
                   </div>
                 </div>
               </div>

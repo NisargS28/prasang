@@ -11,7 +11,7 @@ export default function Home() {
     <>
       <Header />
       <main>
-        <section className="py-20 md:py-32 relative overflow-hidden min-h-screen">
+        <section className="py-8 md:py-12 relative overflow-hidden h-[calc(100vh-80px)] flex items-start md:items-center">
           {/* Taj Mahal background image for mobile */}
           <div 
             className="absolute inset-0 md:hidden" 
@@ -42,20 +42,17 @@ export default function Home() {
             }}
           ></div>
           
-          <div className="container mx-auto px-4 relative z-10">
+          <div className="container mx-auto px-4 relative z-10 pt-8 md:pt-0">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
               <div className="max-w-2xl fade-in-up">
-                <h1 className="text-4xl md:text-6xl font-light mb-6 tracking-tight text-balance">Timeless Elegance</h1>
-                {/* <p className="text-lg text-muted-foreground mb-8 text-pretty">
-                  Discover our premium collection of women's fashion, curated for those who appreciate quality, style, and
-                  sophistication.
-                </p> */}
-                <p className="text-lg text-muted-foreground mb-8 text-pretty">
+                <h1 className="text-3xl md:text-5xl font-light mb-4 tracking-tight text-balance">Timeless Elegance</h1>
+                <p className="text-base md:text-lg text-muted-foreground mb-6 text-pretty">
                   From festivals to daily wear, PRASANG was born to dress every chapter of your life—traditional at heart, modern in style.
                 </p>
                 <Link
                   href="/shop"
-                  className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-10 py-4 font-semibold rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 hover:bg-primary/90 group"
+                  className="inline-flex items-center gap-2 text-white px-8 py-3 font-semibold rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 group"
+                  style={{ backgroundColor: '#5A3A2E' }}
                 >
                   Explore Collection
                   <svg 
@@ -86,10 +83,10 @@ export default function Home() {
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                       />
                     </div>
-                    <h3 className="font-medium text-lg mb-2 group-hover:text-primary transition-colors">
+                    <h3 className="font-medium text-lg mb-2 transition-colors group-hover:text-[#7B8D6A]">
                       {product.name}
                     </h3>
-                    <p className="text-primary font-semibold">₹{product.price.toLocaleString("en-IN")}</p>
+                    <p className="text-primary font-semibold transition-colors group-hover:text-[#7B8D6A]">₹{product.price.toLocaleString("en-IN")}</p>
                   </div>
                 </Link>
               ))}

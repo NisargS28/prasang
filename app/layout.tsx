@@ -9,7 +9,7 @@ const _geist = Geist({ subsets: ["latin"] })
 const sahitya = Sahitya({ subsets: ["devanagari"], weight: ["400", "700"] })
 
 export const metadata: Metadata = {
-  title: "Elegance - Premium Women's Fashion",
+  title: "Prasang - Premium Women's Fashion",
   description: "Discover premium women's fashion with elegant styles and luxurious collections",
   generator: "v0.app",
   icons: {
