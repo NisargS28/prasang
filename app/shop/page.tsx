@@ -9,7 +9,7 @@ export default function Shop() {
   return (
     <>
       <Header />
-      <main>
+      <main style={{ animation: 'fadeInUp 600ms ease-out' }}>
         <section className="border-b border-border">
           <div className="container mx-auto px-4 py-12">
             <Link 

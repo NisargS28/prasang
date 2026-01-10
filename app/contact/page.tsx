@@ -36,7 +36,7 @@ export default function Contact() {
   return (
     <>
       <Header />
-      <main>
+      <main style={{ animation: 'fadeInUp 600ms ease-out' }}>
         <section className="bg-secondary py-20 md:py-32">
           <div className="container mx-auto px-4">
             <h1 className="text-4xl md:text-5xl font-light mb-6 tracking-tight max-w-2xl">Get in Touch</h1>

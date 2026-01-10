@@ -6,7 +6,7 @@ export default function About() {
   return (
     <>
       <Header />
-      <main>
+      <main style={{ animation: 'fadeInUp 600ms ease-out' }}>
         <section className="bg-secondary py-8 md:py-12 min-h-[calc(100vh-80px)] flex items-center">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">

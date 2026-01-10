@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <main>
+      <main style={{ animation: 'fadeInUp 600ms ease-out' }}>
         <section className="py-8 md:py-12 relative overflow-hidden h-[calc(100vh-80px)] flex items-start md:items-center">
           {/* Taj Mahal background image for mobile */}
           <div 

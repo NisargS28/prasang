@@ -77,7 +77,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
   return (
     <>
       <Header />
-      <main>
+      <main style={{ animation: 'fadeInUp 600ms ease-out' }}>
         <div className="container mx-auto px-4 py-8">
           <Link
             href="/shop"
