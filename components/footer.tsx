@@ -30,13 +30,8 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-foreground transition-colors">
+                <a href="/privacy" className="hover:text-foreground transition-colors">
                   Privacy Policy
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-foreground transition-colors">
-                  Shipping Info
                 </a>
               </li>
             </ul>
