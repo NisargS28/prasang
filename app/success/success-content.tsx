@@ -112,7 +112,7 @@ export function SuccessContent() {
             <CheckCircle className="w-16 h-16 text-primary mx-auto mb-6" />
             <h1 className="text-4xl font-light mb-4 tracking-tight">Payment Successful!</h1>
             <p className="text-lg text-muted-foreground mb-2">Thank you for your purchase</p>
-            <p className="text-lg text-muted-foreground mb-4">Please Take Screenshot of this page & Send it to Us on Whatsapp for Order Confirmation</p>
+            <p className="text-lg text-muted-foreground mb-4">Please Send Us details on Whatsapp for Order Confirmation by clicking the button below.</p>
             <p className="text-sm text-muted-foreground mb-6">Order ID: {orderId}</p>
             
             {order && (
