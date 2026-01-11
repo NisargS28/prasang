@@ -2,9 +2,16 @@ import { type NextRequest, NextResponse } from "next/server"
 import Razorpay from "razorpay"
 
 function getRazorpay() {
+  const keyId = process.env.RAZORPAY_KEY_ID
+  const keySecret = process.env.RAZORPAY_KEY_SECRET
+
+  if (!keyId || !keySecret) {
+    throw new Error("Razorpay credentials are not configured. Please check your environment variables.")
+  }
+
   return new Razorpay({
-    key_id: process.env.RAZORPAY_KEY_ID!,
-    key_secret: process.env.RAZORPAY_KEY_SECRET!,
+    key_id: keyId,
+    key_secret: keySecret,
   })
 }
 
@@ -27,7 +34,9 @@ const orders: {
 
 export async function POST(request: NextRequest) {
   try {
-    const { productId, productName, price, size } = await request.json()
+    const { productId, productName, price, size, email, phone, address } = await request.json()
+
+    console.log("Creating order for:", { productId, productName, price, size, email })
 
     // Create Razorpay order
     const razorpay = getRazorpay()
@@ -37,7 +46,9 @@ export async function POST(request: NextRequest) {
       receipt: `order_${Date.now()}`,
     })
 
-    // Store order locally
+    console.log("Razorpay order created:", razorpayOrder.id)
+
+    // Store order locally with customer details
     const orderId = `order_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
     orders[orderId] = {
       id: orderId,
@@ -47,6 +58,9 @@ export async function POST(request: NextRequest) {
       size,
       razorpayOrderId: razorpayOrder.id,
       status: "pending",
+      email,
+      phone,
+      address,
       createdAt: new Date(),
     }
 
@@ -56,7 +70,8 @@ export async function POST(request: NextRequest) {
     })
   } catch (error) {
     console.error("Error creating order:", error)
-    return NextResponse.json({ error: "Failed to create order" }, { status: 500 })
+    const errorMessage = error instanceof Error ? error.message : "Failed to create order"
+    return NextResponse.json({ error: errorMessage }, { status: 500 })
   }
 }
 
@@ -65,30 +80,14 @@ export async function PUT(request: NextRequest) {
     const { orderId, razorpayPaymentId, email, phone, address } = await request.json()
 
     if (orders[orderId]) {
+      // Update order status and payment info
       orders[orderId].status = "completed"
       orders[orderId].paymentId = razorpayPaymentId
-      orders[orderId].email = email
-      orders[orderId].phone = phone
-      orders[orderId].address = address
-
-      try {
-        await fetch(`${process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"}/api/send-confirmation`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            orderId,
-            email,
-            productName: orders[orderId].productName,
-            price: orders[orderId].price,
-            size: orders[orderId].size,
-            address,
-            phone,
-            razorpayPaymentId,
-          }),
-        })
-      } catch (emailError) {
-        console.error("Failed to send confirmation email:", emailError)
-      }
+      
+      // Update customer details if provided
+      if (email) orders[orderId].email = email
+      if (phone) orders[orderId].phone = phone
+      if (address) orders[orderId].address = address
     }
 
     return NextResponse.json({ success: true })

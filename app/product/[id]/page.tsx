@@ -5,7 +5,6 @@ import { Footer } from "@/components/footer"
 import { use, useState, useEffect } from "react"
 import Link from "next/link"
 import { ChevronLeft } from "lucide-react"
-import { createRazorpayOrder, getRazorpayKey } from "@/app/lib/actions"
 import { products } from "@/lib/products"
 
 export default function ProductPage({ params }: { params: { id: string } }) {
@@ -14,16 +13,52 @@ export default function ProductPage({ params }: { params: { id: string } }) {
   const product = products.find((p) => p.id === productId) || products[0]
   const [selectedSize, setSelectedSize] = useState(product.sizes[2])
   const [loading, setLoading] = useState(false)
-  const [razorpayKey, setRazorpayKey] = useState("")
+  const [showCheckoutForm, setShowCheckoutForm] = useState(false)
+  const [checkoutData, setCheckoutData] = useState({ email: "", phone: "", address: "" })
+  const razorpayKey = process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID || ""
 
-  useEffect(() => {
-    getRazorpayKey().then(setRazorpayKey)
-  }, [])
+  const handleBuyNow = () => {
+    setShowCheckoutForm(true)
+  }
 
-  const handleBuyNow = async () => {
+  const handleCheckoutSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!razorpayKey) {
+      alert("Payment system is not configured. Please contact support.")
+      return
+    }
+
     setLoading(true)
     try {
-      const data = await createRazorpayOrder(product.id, product.name, product.price, selectedSize)
+      console.log("Creating order for product:", product.id)
+      
+      // Call API directly from client
+      const response = await fetch("/api/orders", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          productId: product.id,
+          productName: product.name,
+          price: product.price,
+          size: selectedSize,
+          email: checkoutData.email,
+          phone: checkoutData.phone,
+          address: checkoutData.address,
+        }),
+      })
+
+      if (!response.ok) {
+        const errorText = await response.text()
+        console.error("API Error:", errorText)
+        throw new Error(`Failed to create order: ${errorText}`)
+      }
+
+      const data = await response.json()
+      console.log("Order created:", data)
+
+      if (data.error) {
+        throw new Error(data.error)
+      }
 
       if (data.razorpayOrderId) {
         // Store order info for success page
@@ -35,6 +70,9 @@ export default function ProductPage({ params }: { params: { id: string } }) {
             productName: product.name,
             price: product.price,
             size: selectedSize,
+            email: checkoutData.email,
+            phone: checkoutData.phone,
+            address: checkoutData.address,
           }),
         )
 
@@ -47,15 +85,15 @@ export default function ProductPage({ params }: { params: { id: string } }) {
             key: razorpayKey,
             amount: product.price * 100,
             currency: "INR",
-            name: "Elegance",
+            name: "Prasang",
             description: `${product.name} - Size ${selectedSize}`,
             order_id: data.razorpayOrderId,
             handler: (response: any) => {
               window.location.href = `/success?orderId=${data.orderId}&razorpayId=${response.razorpay_payment_id}`
             },
             prefill: {
-              email: "",
-              contact: "",
+              email: checkoutData.email,
+              contact: checkoutData.phone,
             },
             theme: {
               color: "#b38971",
@@ -64,12 +102,18 @@ export default function ProductPage({ params }: { params: { id: string } }) {
           const rzp = new (window as any).Razorpay(options)
           rzp.open()
         }
+        script.onerror = () => {
+          alert("Failed to load payment gateway. Please check your internet connection.")
+          setLoading(false)
+        }
         document.body.appendChild(script)
+      } else {
+        throw new Error("Invalid response from server")
       }
     } catch (error) {
       console.error("Error initiating payment:", error)
-      alert("Failed to initiate payment. Please try again.")
-    } finally {
+      const errorMessage = error instanceof Error ? error.message : "Failed to initiate payment. Please try again."
+      alert(errorMessage)
       setLoading(false)
     }
   }
@@ -129,6 +173,61 @@ export default function ProductPage({ params }: { params: { id: string } }) {
               >
                 {loading ? "Processing..." : "Buy Now"}
               </button>
+
+              {showCheckoutForm && (
+                <div className="mb-4 bg-secondary p-6 border border-border">
+                  <h3 className="font-semibold mb-4">Checkout Details</h3>
+                  <form onSubmit={handleCheckoutSubmit} className="space-y-4">
+                    <div>
+                      <label className="block text-sm font-medium mb-2">Email *</label>
+                      <input
+                        type="email"
+                        required
+                        value={checkoutData.email}
+                        onChange={(e) => setCheckoutData({ ...checkoutData, email: e.target.value })}
+                        className="w-full border border-border px-4 py-2 bg-background"
+                        placeholder="your@email.com"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium mb-2">Phone Number *</label>
+                      <input
+                        type="tel"
+                        required
+                        value={checkoutData.phone}
+                        onChange={(e) => setCheckoutData({ ...checkoutData, phone: e.target.value })}
+                        className="w-full border border-border px-4 py-2 bg-background"
+                        placeholder="+91"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium mb-2">Delivery Address *</label>
+                      <textarea
+                        required
+                        value={checkoutData.address}
+                        onChange={(e) => setCheckoutData({ ...checkoutData, address: e.target.value })}
+                        className="w-full border border-border px-4 py-2 bg-background"
+                        placeholder="Enter your full address"
+                        rows={3}
+                      />
+                    </div>
+                    <button
+                      type="submit"
+                      disabled={loading}
+                      className="w-full bg-primary text-primary-foreground py-3 font-medium hover:bg-primary/90 transition-colors disabled:opacity-50"
+                    >
+                      {loading ? "Processing..." : "Proceed to Payment"}
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setShowCheckoutForm(false)}
+                      className="w-full border border-border py-3 font-medium hover:bg-secondary transition-colors"
+                    >
+                      Cancel
+                    </button>
+                  </form>
+                </div>
+              )}
 
               <a
                 href={`https://wa.me/918200100418?text=${encodeURIComponent(
